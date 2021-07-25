@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy.core.numeric import ones_like
+from numpy.linalg import solve
 
 from scipy.optimize import minimize
+from scipy.optimize import shgo
 from scipy.optimize import Bounds
 from scipy.optimize import NonlinearConstraint
 
@@ -93,8 +95,10 @@ bnds = (bnd_z1, bnd_z2, bnd_z3, bnd_z4,
 
 nonlinear_constraint = NonlinearConstraint(nl_con, -np.inf, 0)
 
-x0 = np.array([ 0.9, 1.9, 1.9, 0.9, np.pi/2-0.2, (3/2+0.2)*np.pi, 0.4, 0.3, 0.4 ])
+x0 = np.array([ 0.9, 2.5, 1.5, 0.9, np.pi/2-0.2, (3/2+0.2)*np.pi, 0.4, 0.3, 0.4 ])
 
 sol = minimize(obj, x0, method = 'trust-constr',
                 constraints=nonlinear_constraint,
-                options={'verbose': 1}, bounds=bnds)
+                options={'verbose': 3, 'maxiter': 1e50, 'xtol': 1e-8}, bounds=bnds)
+
+# print(sol)
