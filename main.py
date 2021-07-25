@@ -83,16 +83,6 @@ bnds = (bnd_z1, bnd_z2, bnd_z3, bnd_z4,
         bnd_phi_start, bnd_phi_end, 
         bnd_t1, bnd_t2, bnd_t3)
 
-# bounds = Bounds (   [z1_min, z1_max],               # z1 bounds 
-#                     [z1_min, z1_max],               # z2 bounds
-#                     [z2_min, z2_max],               # z3 bounds
-#                     [z3_min, z3_max],              # z4 bounds
-#                     [phi_start_min, phi_start_max], # phi_start bounds
-#                     [phi_end_min, phi_end_max],     # phi_end bounds
-#                     [t1_min, t1_max],               # t1 bounds
-#                     [t2_min, t2_max],               # t2 bounds
-#                     [t3_min, t3_max])               # t3 bounds
-
 nonlinear_constraint = NonlinearConstraint(nl_con, -np.inf, 0)
 
 x0 = np.array([ 0.9, 2.5, 1.5, 0.9, np.pi/2-0.2, (3/2+0.2)*np.pi, 0.4, 0.3, 0.4 ])
